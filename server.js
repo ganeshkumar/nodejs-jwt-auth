@@ -29,8 +29,8 @@ app.post('/login', (req,res) => {
   //Authenticate User
   const username = req.body.username
   const user = { username: username }
-  const accessToken = jwt.sign(user, env.AUTH_TOKEN_SECRET)
-  res.json({accessToken: accessToken})
+  const accessToken = jwt.sign(user, env.AUTH_TOKEN_SECRET, { expiresIn: '15m' })
+  res.json({ accessToken: accessToken })
 })
 
 app.get('/posts', authenticateToken, (req, res) => {
