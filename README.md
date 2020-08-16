@@ -1,5 +1,7 @@
 # nodejs-jwt-auth
 
+### This simple Nodejs app to see how jwt tokens works and how to expire them
+
 ### clone this repo
 
 
@@ -20,7 +22,7 @@ yarn install
 yarn run devStart
 ```
 
-### open postman/ Advanced Rest Client
+### open postman / Advanced Rest Client
 ```sh
 POST http://localhost:300/login
 
@@ -29,8 +31,19 @@ Add request body
  "username": "FooBar"
 }
 
-Hit Submit
-
+Hit Submit you will get accessToken will be valid for 1 hour
 ```
+
+
+```sh
+POST http://localhost:300/posts
+
+Add request header
+Authorisxation :  Bearer <TOKEN>
+
+Hit Submit you will get posts
+```
+
+
 
 
