@@ -13,3 +13,24 @@ yarn --version
 ```sh
 yarn install
 ```
+
+
+### goto project folder and run app
+```sh
+yarn run devStart
+```
+
+### open postman/ Advanced Rest Client
+```sh
+POST http://localhost:300/login
+
+Add request body 
+{
+ "username": "FooBar"
+}
+
+Hit Submit
+
+```
+
+
