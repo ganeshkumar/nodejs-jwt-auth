@@ -3,7 +3,7 @@
 ### clone this repo
 
 ```sh
-- mke sure yarn is installed in ur system
+- Make sure yarn is installed in ur system
 - yarn --version
 ```
 
