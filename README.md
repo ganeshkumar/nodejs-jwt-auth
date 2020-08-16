@@ -2,13 +2,14 @@
 
 ### clone this repo
 
+
+### Make sure yarn is installed in ur system by running
 ```sh
-- Make sure yarn is installed in ur system
-- yarn --version
+yarn --version
 ```
 
 ### install dependencies by running
 
 ```sh
-- run yarn install
+yarn install
 ```
