@@ -39,7 +39,7 @@ Hit Submit you will get accessToken will be valid for 1 hour
 POST http://localhost:300/posts
 
 Add request header
-Authorisxation :  Bearer <TOKEN>
+Authorisation :  Bearer <TOKEN>
 
 Hit Submit you will get posts
 ```
