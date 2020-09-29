@@ -2,7 +2,7 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const yenv = require('yenv')
 const env = yenv('./env.yaml', {env: 'development'})
-
+const { createReadStream } = require('fs');
 const app = express()
 
 
@@ -35,6 +35,21 @@ app.post('/login', (req,res) => {
 
 app.get('/posts', authenticateToken, (req, res) => {
   res.json(posts)
+})
+
+app.get('/stream', (req, res) => {
+   let readStream = createReadStream('./file_example1.mp3');
+   readStream.on('data', (data) => {
+     console.log('data reading', data);
+     res.write(data)
+   });
+   // readStream.pipe(res);
+   readStream.on('error', (error) => {
+     console.log(error);
+     res.status(404);
+     res.end(' ');
+   });
+   readStream.on('end', () => console.log('done'));
 })
 
 function authenticateToken(req, res, next) {
