@@ -1,10 +1,17 @@
 const fs = require('fs')
 
 const readStream = fs.createReadStream('./file_example.mp3')
-const writeStream = fs.createWriteStream('./file_example1.mp3')
+const writeStream = fs.createWriteStream('./file_example1.mp3', {
+  highWaterMark: 111
+})
+
 
 readStream.on('data', (chunk) => {
-  chunk.pipe(writeStream);
+  const dataFull = writeStream.write(chunk);
+  if (!dataFull) {
+    console.log('data is full in buffer, apply backpressure');
+    readStream.pause();
+  }
 })
 
 readStream.on('error', (error) => {
@@ -15,6 +22,11 @@ readStream.on('error', (error) => {
 
 readStream.on('end', () => {
   writeStream.end();
+})
+
+writeStream.on('drain', () => {
+  console.log('stream is drained!');
+  readStream.resume();
 })
 
 writeStream.on('close', () => {
